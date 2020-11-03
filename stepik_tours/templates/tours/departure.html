@@ -1,0 +1,24 @@
+{% extends 'tours/base.html' %}
+{% block content %}
+  <main class="container mt-3">
+    <h1 class="display-5 mt-4">Летим {{ departure }}</h1>
+    <p class="mb-4">Найдено {{ tours|length }} туров, от 26 000 до 84 600 и
+      от 4 ночей до 15 ночей</p>
+    <!-- CARDS -->
+    <div class="row mt-5">
+      {% for tour in tours %}
+      <div class="col-4">
+        <div class="card mb-4">
+          <img src="{{ tour.picture }}" class="card-img-top img-fluid" alt="">
+          <div class="card-body">
+            <h2 class="h5 card-title">{{ tour.title }}</h2>
+            <p class="card-text">Some quick example text to build on the card title and make up
+              the bulk of the card's content.</p>
+            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}
