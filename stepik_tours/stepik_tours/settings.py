@@ -23,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qv5#_upiw5y(wwrl2ccwqqvk+llf@ju)!-us++g$imas1klv%)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
-
+STATIC_ROOT = 'static'
 # Application definition
 
 INSTALLED_APPS = [
