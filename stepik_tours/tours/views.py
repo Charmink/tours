@@ -14,7 +14,10 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
         context['title'] = data.title
-        context['tours'] = [data.tours[randrange(1, 16)] for i in range(6)]
+        context['tours'] = {}
+        for i in range(6):
+            j = randrange(1, 16)
+            context['tours'][j] = data.tours[j]
         context['description'] = data.description
         context['departures'] = data.departures
         context['subtitle'] = data.subtitle
@@ -27,8 +30,10 @@ class DepartureView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(DepartureView, self).get_context_data(**kwargs)
         context['title'] = data.title
-        context['tours'] = [tour for tour in data.tours.values() if tour['departure'] ==
-                            context['departure']]
+        context['tours'] = {}
+        for key in [key for key, tour in data.tours.items()
+                    if tour['departure'] == context['departure']]:
+            context['tours'][key] = data.tours[key]
         context['departures'] = data.departures
         context['departure'] = data.departures[context['departure']]
         return context
